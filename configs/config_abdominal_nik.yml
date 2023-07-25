@@ -1,0 +1,71 @@
+# data config
+subject_name: &subject_name 2
+slice: &slice 20
+fe_steps: 600
+n_slices: 84
+
+# experiment summary config
+wandb_entity: dummy
+wandb_project: &wandb_project dummy
+#exp_summary: None
+log_test: True
+exp_summary: wandb
+group_name: &group_name NIK
+exp_name: ref_w20
+
+data_root: !join [workspace_results/shared/monik/]
+results_root: !join [workspace_results/shared/, *wandb_project]
+
+## Training
+pretrain: False
+#pretrain_group: !join ['ref_cxy_1', '_S', *subject_name]
+#pretrain_exp: !join ['nik']
+num_steps: 50
+lr: 3e-5
+
+subjects: [1]
+nc_recon: &nc_recon 26
+coil_select: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25] #[2,3,4,5,6,7]
+
+# encoding
+encoding: spatial
+## Dataloader
+dataset:
+  module: datasets.radialSoS_sorted
+  name: RadialSoSDataset
+  navigator_min: -1
+num_workers: 0
+batch_size: 30000 #30000
+sample_spoke: True
+random_sample: False
+sample_per_epoch: 100
+acc_factor: 3     # cut spokes
+fe_downsample: 1  # downsample FE steps
+fe_crop: 1    # crop the FE range (resolution is decreased)
+
+## Models
+# model config for mlp - kdata
+model:
+  module: models.siren_sos
+  name: NIKSiren
+  params:
+    num_layers: 8
+    hidden_features: 512
+    omega_0: 20
+coord_dim: 3 # and for second network +1 (t)
+out_dim: *nc_recon
+#scale: 40
+
+
+# loss config
+loss_type: hdr_ff #weighted_l1 #weighted_l1
+hdr_eps: 1e-2
+hdr_ff_sigma: 1
+hdr_ff_factor: 0.1
+
+# recon config
+#nrecon: [*nc_recon, 300, 300, 5]
+nc: *nc_recon
+nx: 300
+ny: 300
+nnav: 5
