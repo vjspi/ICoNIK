@@ -19,21 +19,22 @@ The expected source data is a numpy file with the following entries:
 ~~~
 
 ## Training
+
 1) For NIK on radial Stack-of-Star (SoS) data
  
-  a) Adapt 'config_abdominal_nik' to your needs (e.g. for data, experiment naming & tracking, model, loss and recon)
+   a) Adapt `config_abdominal_nik.yml` to your needs (e.g. for data, experiment naming & tracking, model, loss and recon)
 
-  b) Run 'python3 -u train_sos_nik.py -c "configs/config_abdominal_nik.yml" -r $ACC_FACTOR -sub $SUBJECT -s $SLICE'
+   b) Run `python3 -u train_sos_nik.py -c "configs/config_abdominal_nik.yml" -r $ACC_FACTOR -sub $SUBJECT -s $SLICE`
 
 
 2) For ICoNIK on radial Stack-of-Star (SoS) data:
 
-  a) Adapt 'config_abdominal_iconik' to your needs:
-  - Set path to pretrained NIK in training config
-  - Set ICo parameters (ACS calibration schedule: kernel-size, autocalibration region and freeze_epoch)
-  - General config, model config, loss config, recon config: as in 1)
+   a) Adapt `config_abdominal_iconik.yml` to your needs:
+      - Set path to pretrained NIK in training config
+      - Set ICo parameters (ACS calibration schedule: kernel-size, autocalibration region and freeze_epoch)
+      - General config, model config, loss config, recon config: as in 1)
 
-  b) Run 'python3 -u train_sos_iconik.py -c "configs/config_abdominal_iconik.yml" -r $ACC_FACTOR -sub $SUBJECT -s $SLICE'
+   b) Run `python3 -u train_sos_iconik.py -c "configs/config_abdominal_iconik.yml" -r $ACC_FACTOR -sub $SUBJECT -s $SLICE`
 
 
 All computations were performed using Python 3.10.1 and PyTorch 1.13.1.
