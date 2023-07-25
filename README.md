@@ -4,19 +4,16 @@
 This is the repo for the paper _ICoNIK: Generating Respiratory-Resolved Abdominal MR Reconstructions Using Neural Implicit Representations in k-Space_ 
 published at the DGM4MICCAI Workshop 2023.
 
+Overview of the method (“First published in [Volume, page number, year] by Springer Nature”.
+
+![overview](https://github.com/vjspi/ICoNIK/assets/80716904/1494861c-6046-4582-af4a-cbe197df6e23)
+
+
 
 ## Content
 - `train_sos_nik`: First neural implicit k-space representation (NIK) for motion-resolved abdominal reconstruction of
  radial Stack-of-Star (SoS) data guided by a respiratory navigator signal (extension of [NIK_MRI](https://github.com/wenqihuang/NIK_MRI))
 - `train_sos_iconik`: Informed correction of NIK (ICoNIK) to leverage neighborhood information by applying a kernel which is auto-calibrated on a more densely sampled region.
-## Data
-The expected source data is a numpy file with the following entries:
-~~~
-    kdata: raw k-space data - np.array of shape (ech, coils, z-slices, spokes x FE_steps)  
-    self_nav: respiratory navgiator signal - np.array of shape (spokes,)
-    traj: sample trajectory - np.array of shape (ech, spokes x FE_steps, 2)
-    csm: coil sensitivity maps - np.array of shape (coild, x, y, z)
-~~~
 
 ## Training
 
