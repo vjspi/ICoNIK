@@ -1,0 +1,80 @@
+# data config
+subject_name: &subject_name 2
+slice: &slice 20
+fe_steps: 600
+n_slices: 84
+
+# experiment summary config
+wandb_entity: dummy
+wandb_project: &wandb_project dummy
+exp_summary: wandb
+log_test: True
+group_name: &group_name ICoNIK
+exp_name: w20_dim3_lay3
+
+data_root: !join [workspace_results/shared/monik/]
+results_root: !join [workspace_results/shared/, *wandb_project]
+
+## Training
+pretrain: True
+pretrain_group: NIK
+pretrain_exp: ref_w20__hdr0.1 # same hdr
+num_steps: 500
+lr: 3e-5
+
+## ACS calibration schedule
+patch_schedule:
+  calib_timing: jump
+  calib_region: 0.4
+  freeze_epoch: 500
+  finetune_layers: 2
+
+subjects: [1]
+nc_recon: &nc_recon 26
+coil_select: [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25] #[2,3,4,5,6,7] #
+
+# encoding
+encoding: spatial
+## Dataloader
+dataset:
+  module: datasets.radialSoS_sorted
+  name: RadialSoSDataset
+  navigator_min: -1
+num_workers: 4
+batch_size: 10000 #30000
+sample_spoke: True
+random_sample: False
+sample_per_epoch: 100
+acc_factor: 3
+
+## Models
+model:
+  module: models.siren_sos_iconik
+  name: NIKSirenPatch
+  params:
+    num_layers: 8
+    hidden_features: 512
+    omega_0: 20
+    patch_dim: 3
+    patch_dist: 1
+    patch_layers: 3
+    patch_bias: False
+    mask_center: True
+    dual_loss: False
+    relu: True
+coord_dim: 3
+out_dim: *nc_recon
+scale: 10
+
+# loss config
+loss_type: hdr_ff #weighted_l1 #weighted_l1
+hdr_eps: 1e-2
+hdr_ff_sigma: 1
+hdr_ff_factor: 0.1
+
+# recon config
+#nrecon: [*nc_recon, 300, 300, 5]
+nc: *nc_recon
+nx: 300
+ny: 300
+nnav: 5
