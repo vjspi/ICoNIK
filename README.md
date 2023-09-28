@@ -2,9 +2,10 @@
 
 
 This is the repo for the paper _ICoNIK: Generating Respiratory-Resolved Abdominal MR Reconstructions Using Neural Implicit Representations in k-Space_ 
-published at the DGM4MICCAI Workshop 2023.
+accepted at the ![DGM4MICCAI Workshop 2023](https://dgm4miccai.github.io/) | ![PrePrint](https://arxiv.org/abs/2308.08830)
 
-Overview of the method (“First published in [Volume, page number, year] by Springer Nature”.
+**Abstract:**
+_Motion-resolved reconstruction for abdominal magnetic resonance imaging (MRI) remains a challenge due to the trade-off between residual motion blurring caused by discretized motion states and undersampling artefacts. In this work, we propose to generate blurring-free motion-resolved abdominal reconstructions by learning a neural implicit representation directly in k-space (NIK). Using measured sampling points and a data-derived respiratory navigator signal, we train a network to generate continuous signal values. To aid the regularization of sparsely sampled regions, we introduce an additional informed correction layer (ICo), which leverages information from neighboring regions to correct NIK's prediction. Our proposed generative reconstruction methods, NIK and ICoNIK, outperform standard motion-resolved reconstruction techniques and provide a promising solution to address motion artefacts in abdominal MRI._
 
 ![overview](https://github.com/vjspi/ICoNIK/assets/80716904/1494861c-6046-4582-af4a-cbe197df6e23)
 
