@@ -40,7 +40,14 @@ All computations were performed using Python 3.10.1 and PyTorch 1.13.1.
 # If you find this code useful, please cite:
 For generative respiratory-resolved reconstruction using NIK and parallel imaging-inspired ICoNIK:
 
-    @misc{TBD}
+    @article{Spieker_2023_ICoNIK,
+     author = {Spieker, Veronika and Huang, Wenqi and Eichhorn, Hannah and Stelter, Jonathan and Weiss, Kilian and Zimmer, Veronika A. and Braren, Rickmer F. and Karampinos, Dimitrios C. and Hammernik, Kerstin and Schnabel, Julia A.},
+     title = {{ICoNIK}: Generating Respiratory-Resolved Abdominal {MR} Reconstructions Using Neural Implicit Representations in k-Space},
+     publisher = {{Springer Nature Switzerland}},
+     booktitle={Deep Generative Models. {DGM4MICCAI} [in press]},
+     year = {2023},
+     note = {arXiv: 2308.08830}
+    }
 
 For neural implicit k-space representation learning:
 
