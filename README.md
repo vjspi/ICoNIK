@@ -1,4 +1,4 @@
-# ICoNIK: Informed Correction of Neural Implicit Representation of K-Space
+# ICoNIK: Informed Correction of Neural Implicit Representation of k-Space
 
 
 This is the repo for the paper _ICoNIK: Generating Respiratory-Resolved Abdominal MR Reconstructions Using Neural Implicit Representations in k-Space_ 
